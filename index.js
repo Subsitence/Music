@@ -196,7 +196,7 @@ const app = {
         }
 
         //seek
-        progress.onchange = function(e) {
+        progress.oninput = function(e) {
             audio.currentTime = Number(this.value) * audio.duration / 100;
         }
 
