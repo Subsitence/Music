@@ -170,14 +170,14 @@ const app = {
         playlist.onclick = function(e) {
             const songNode = e.target.closest('.song');
 
-            if($('.song.active')) {
+            if($('.song.active') && songNode) {
                 $('.song.active').classList.remove('active');
+                songNode.classList.add('active');
+                _this.currentIndex = songNode.dataset.index;
+                _this.loadCurrentSong();
+                run();
             }
-            songNode.classList.add('active');
 
-            _this.currentIndex = songNode.dataset.index;
-            _this.loadCurrentSong();
-            run();
         }
 
         nextBtn.onclick = function() {
@@ -276,7 +276,7 @@ const app = {
             $('.song.active').scrollIntoView({
                 behavior: 'smooth',
                 block: 'center'
-            }, 300);
+            }, 400);
         });
     },
 
