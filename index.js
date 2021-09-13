@@ -49,7 +49,7 @@ const app = {
             name: 'Nevada',
             img: './img/Nevada.jpg',
             path: './music/Nevada - Vicetone_ Cozi Zuehlsdorff.mp3',
-            author: 'Vicetone_ Cozi Zuehlsdorff'
+            author: 'Vicetone - Cozi Zuehlsdorff'
         },
         {
             name: 'One Call Away',
@@ -61,7 +61,7 @@ const app = {
             name: 'See You Again',
             img: './img/See you again.jpg',
             path: './music/See You Again - Wiz Khalifa_ Charlie Put.mp3',
-            author: 'Wiz Khalifa_ Charlie Put'
+            author: 'Wiz Khalifa - Charlie Put'
         },
         {
             name: 'Cheating On You',
@@ -73,19 +73,49 @@ const app = {
             name: 'Hero',
             img: './img/Hero.jpg',
             path: './music/Hero - Cash Cash_ Christina Perri.mp3',
-            author: 'Cash Cash_ Christina Perri'
+            author: 'Cash Cash - Christina Perri'
         },
         {
             name: 'Stay',
             img: './img/Stay.jpg',
             path: './music/Stay - The Kid LAROI_ Justin Bieber.mp3',
-            author: 'The Kid LAROI_ Justin Bieber'
+            author: 'The Kid LAROI - Justin Bieber'
         },
         {
             name: 'Darkside',
             img: './img/Darkside.jpg',
             path: './music/Darkside - Alan Walker_ Tomine Harket_ A.mp3',
-            author: 'Alan Walker_ Tomine Harket_ A'
+            author: 'Alan Walker - Tomine Harket - A'
+        },
+        {
+            name: 'Dusk Till Dawn',
+            img: './img/Dusk Till Dawn.jpg',
+            path: './music/Dusk Till Dawn - Tyler_ Ryan.mp3',
+            author: 'Tyler - Ryan'
+        },
+        {
+            name: 'I Love You 3000',
+            img: './img/I Love You 3000.jpg',
+            path: './music/I Love You 3000 II - 88rising_ Jackson W.mp3',
+            author: '88rising - Jackson W'
+        },
+        {
+            name: 'Symphony',
+            img: './img/Symphony.jpg',
+            path: './music/Symphony - Clean Bandit_ Zara Larsson.mp3',
+            author: 'Clean Bandit - Zara Larsson'
+        },
+        {
+            name: 'Unstoppable',
+            img: './img/Unstoppable.jpg',
+            path: './music/Unstoppable-Sia-4312901.mp3',
+            author: 'Sia'
+        },
+        {
+            name: 'Talking To The Moon',
+            img: './img/Talking To The Moon.jpg',
+            path: './music/Talking To The Moon - Bruno Mars.mp3',
+            author: 'Bruno Mars'
         },
     ],
 
@@ -160,6 +190,7 @@ const app = {
             $('.song.active').classList.remove('active');
             $$('.song')[_this.currentIndex].classList.add('active');
 
+            _this.scrollIntoActiveSong();
             _this.loadCurrentSong();
             run();
         }
@@ -174,6 +205,7 @@ const app = {
             $('.song.active').classList.remove('active');
             $$('.song')[_this.currentIndex].classList.add('active');
 
+            _this.scrollIntoActiveSong();
             _this.loadCurrentSong();
             run();
         }
@@ -237,6 +269,15 @@ const app = {
         }
 
         this.currentIndex = randomIndex;
+    },
+
+    scrollIntoActiveSong: function() {
+        setTimeout(() => {
+            $('.song.active').scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            }, 300);
+        });
     },
 
     loadCurrentSong: function() {
