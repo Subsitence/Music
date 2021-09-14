@@ -232,12 +232,15 @@ const app = {
 
                 let MinLeft = Math.ceil(time / 60);
                 let SecLeft = -Math.ceil(time % 60);
+                console.log(MinLeft);
 
                 if(currentSec < 10) {
                     currentSec = `0${currentSec}`;
                 }
                 if(SecLeft < 10) {
                     SecLeft = `0${SecLeft}`;
+                }
+                if(MinLeft > -1) {
                     MinLeft = `-${MinLeft}`;
                 }
 
