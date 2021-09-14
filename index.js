@@ -230,14 +230,15 @@ const app = {
                 let currentMin = Math.floor(audio.currentTime / 60);
                 let currentSec = Math.floor(audio.currentTime % 60);
 
-                let MinLeft = Math.floor(time / 60);
-                let SecLeft = -Math.floor(time % 60);
+                let MinLeft = Math.ceil(time / 60);
+                let SecLeft = -Math.ceil(time % 60);
 
                 if(currentSec < 10) {
                     currentSec = `0${currentSec}`;
                 }
                 if(SecLeft < 10) {
                     SecLeft = `0${SecLeft}`;
+                    MinLeft = `-${MinLeft}`;
                 }
 
                 $('.timer span').textContent = `${currentMin}:${currentSec}`;
