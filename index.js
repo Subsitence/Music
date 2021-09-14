@@ -11,7 +11,8 @@ const nextBtn = $('.btn-next');
 const prevBtn = $('.btn-prev');
 const repeatBtn = $('.btn-repeat');
 const randomBtn = $('.btn-random');
-const progress = $('#progress');
+const progress = $('.progress');
+const progressBar = $('.progress-bar');
 
 const app = {
     currentIndex: 0,
@@ -223,13 +224,30 @@ const app = {
         //Progress of songs
         audio.ontimeupdate = function() {
             if(audio.duration) {
-                progress.value = audio.currentTime / audio.duration * 100;
+                let time = audio.currentTime - audio.duration;
+                progressBar.style.width = audio.currentTime / audio.duration * 100 + '%';
+
+                let currentMin = Math.floor(audio.currentTime / 60);
+                let currentSec = Math.floor(audio.currentTime % 60);
+
+                let MinLeft = Math.floor(time / 60);
+                let SecLeft = -Math.floor(time % 60);
+
+                if(currentSec < 10) {
+                    currentSec = `0${currentSec}`;
+                }
+                if(SecLeft < 10) {
+                    SecLeft = `0${SecLeft}`;
+                }
+
+                $('.timer span').textContent = `${currentMin}:${currentSec}`;
+                $('.timer span:nth-child(2)').textContent = `${MinLeft}:${SecLeft}`;
             }
         }
 
         //seek
-        progress.oninput = function(e) {
-            audio.currentTime = Number(this.value) * audio.duration / 100;
+        progress.onclick = function(e) {
+            audio.currentTime = e.offsetX / this.clientWidth * audio.duration;
         }
 
         //Chuyển bài khi kết thúc
