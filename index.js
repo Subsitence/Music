@@ -154,7 +154,6 @@ const app = {
         cdThumbAnimate.pause();
         
         function run() {
-            _this.loadCurrentSong();
             _this.isPlaying = true;
             player.classList.toggle('playing', _this.isPlaying);
             cdThumbAnimate.play();
@@ -185,9 +184,11 @@ const app = {
             const songNode = e.target.closest('.song');
 
             if($('.song.active') && songNode) {
+                _this.currentIndex = songNode.dataset.index;
+                _this.loadCurrentSong();
                 $('.song.active').classList.remove('active');
                 songNode.classList.add('active');
-                _this.currentIndex = songNode.dataset.index;
+
                 run();
             }
 
@@ -199,6 +200,7 @@ const app = {
             } else {
                 _this.nextSong();
             }
+            _this.loadCurrentSong();
 
             $('.song.active').classList.remove('active');
             $$('.song')[_this.currentIndex].classList.add('active');
@@ -213,6 +215,7 @@ const app = {
             } else {
                 _this.prevSong();
             }
+            _this.loadCurrentSong();
 
             $('.song.active').classList.remove('active');
             $$('.song')[_this.currentIndex].classList.add('active');
