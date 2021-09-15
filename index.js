@@ -142,10 +142,14 @@ const app = {
         cdThumbAnimate.pause();
         
         function run() {
-            _this.isPlaying = true;
-            player.classList.toggle('playing', _this.isPlaying);
-            cdThumbAnimate.play();
-            audio.play();
+            _this.loadCurrentSong();
+
+            if(audio.src) { //fix asynchronous
+                _this.isPlaying = true;
+                player.classList.toggle('playing', _this.isPlaying);
+                cdThumbAnimate.play();
+                audio.play();
+            }
         }
 
         document.onscroll = function() {
@@ -175,7 +179,6 @@ const app = {
                 $('.song.active').classList.remove('active');
                 songNode.classList.add('active');
                 _this.currentIndex = songNode.dataset.index;
-                _this.loadCurrentSong();
                 run();
             }
 
@@ -192,7 +195,6 @@ const app = {
             $$('.song')[_this.currentIndex].classList.add('active');
 
             _this.scrollIntoActiveSong();
-            _this.loadCurrentSong();
             run();
         }
 
@@ -207,7 +209,6 @@ const app = {
             $$('.song')[_this.currentIndex].classList.add('active');
 
             _this.scrollIntoActiveSong();
-            _this.loadCurrentSong();
             run();
         }
 
