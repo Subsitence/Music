@@ -118,6 +118,18 @@ const app = {
             path: './music/Talking To The Moon - Bruno Mars.mp3',
             author: 'Bruno Mars'
         },
+        {
+            name: 'Deja Vu',
+            img: './img/Deja Vu.jpg',
+            path: './music/Deja Vu - Olivia Rodrigo.mp3',
+            author: 'Olivia Rodrigo'
+        },
+        {
+            name: 'Good 4 U',
+            img: './img/Good 4 U.jpg',
+            path: './music/Good 4 U - Olivia Rodrigo.mp3',
+            author: 'Olivia Rodrigo'
+        },
     ],
 
     defineProperties: function() {
