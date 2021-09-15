@@ -144,12 +144,13 @@ const app = {
         function run() {
             _this.loadCurrentSong();
 
-            if(audio.src) { //fix asynchronous
+            audio.onloadeddata = function() {
                 _this.isPlaying = true;
                 player.classList.toggle('playing', _this.isPlaying);
                 cdThumbAnimate.play();
                 audio.play();
             }
+            
         }
 
         document.onscroll = function() {
