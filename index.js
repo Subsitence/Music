@@ -142,13 +142,14 @@ const app = {
         cdThumbAnimate.pause();
         
         function run() {
+            audio.src = '';
             _this.loadCurrentSong();
-            _this.isPlaying = true;
-            player.classList.toggle('playing', _this.isPlaying);
-            cdThumbAnimate.play();
-            audio.play();
-            
-            
+            if(audio.src) {
+                _this.isPlaying = true;
+                player.classList.toggle('playing', _this.isPlaying);
+                cdThumbAnimate.play();
+                audio.play();
+            }
         }
 
         document.onscroll = function() {
