@@ -143,13 +143,11 @@ const app = {
         
         function run() {
             _this.loadCurrentSong();
-
-            audio.onloadeddata = function() {
-                _this.isPlaying = true;
-                player.classList.toggle('playing', _this.isPlaying);
-                cdThumbAnimate.play();
-                audio.play();
-            }
+            _this.isPlaying = true;
+            player.classList.toggle('playing', _this.isPlaying);
+            cdThumbAnimate.play();
+            audio.play();
+            
             
         }
 
@@ -164,10 +162,10 @@ const app = {
         playBtn.onclick = function() {
             _this.isPlaying = !_this.isPlaying;
             player.classList.toggle('playing', _this.isPlaying);
-            if(_this.isPlaying) {
+            if(_this.isPlaying && audio.paused) {
                 cdThumbAnimate.play();
                 audio.play();
-            } else {
+            } else if(!_this.isPlaying && !audio.paused) {
                 cdThumbAnimate.pause();
                 audio.pause();
             }
